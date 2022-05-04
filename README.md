@@ -1,7 +1,7 @@
 <h1 align="center">Greetings, I'm Vreiln</h1>
 <h3 align="center">Just a simple IT student</h3>
 
-<h3 align="left">Connect with me: <a href="https://github.com/rhonstratos">github/rhonstratos</a></h3>
+<h3 align="left">Connect with me: <a href="https://github.com/rhonstratos">@github/rhonstratos</a></h3>
 <p align="left">
 </p>
 
