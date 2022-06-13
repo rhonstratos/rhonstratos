@@ -556,6 +556,62 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.mt-\[5rem\] {
+  margin-top: 5rem;
+}
+
+.bg-\[\#fff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .text-center {
   text-align: center;
+}
+
+.font-\[Lato\] {
+  font-family: Lato;
+}
+
+.font-\[\'Lato\'\] {
+  font-family: 'Lato';
+}
+
+.font-\[\'Lato\2c sans-serif\'\] {
+  font-family: 'Lato,sans-serif';
+}
+
+.font-\[\'Lato\2c \'sans-serif\] {
+  font-family: 'Lato,'sans-serif;
+}
+
+.font-\[\'Lato\'\2c sans-serif\] {
+  font-family: 'Lato',sans-serif;
+}
+
+.text-\[250px\] {
+  font-size: 250px;
+}
+
+.text-\[\#000\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.transition {
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, -webkit-text-decoration-color, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.dark .dark\:bg-\[\#000\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:text-\[\#fff\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
