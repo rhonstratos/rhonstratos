@@ -1,9 +1,3 @@
-
-<style>
-p > a {
-background-color: red;
-}
-</style>
 <h1 align="center">Greetings, I'm Vreiln</h1>
 <h3 align="center">Just a simple IT student</h3>
 
