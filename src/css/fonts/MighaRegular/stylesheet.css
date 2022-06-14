@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'MighaRegular';
+    src: url('./fonts/MighaRegular/Migha-Regular.eot');
+    src: url('./fonts/MighaRegular/Migha-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/MighaRegular/Migha-Regular.woff2') format('woff2'),
+        url('./fonts/MighaRegular/Migha-Regular.woff') format('woff'),
+        url('./fonts/MighaRegular/Migha-Regular.ttf') format('truetype'),
+        url('./fonts/MighaRegular/Migha-Regular.svg#Migha-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
