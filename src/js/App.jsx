@@ -8,15 +8,24 @@ const Header = () => {
 	const constraint = 500
 	const rotateX = useTransform(y, [-200, constraint], [45, -45])
 	const rotateY = useTransform(x, [0, constraint], [-45, 45])
+	const set = document.getElementById('paraG')
 
-	function handleMouse(event) {
-		const rect = event.currentTarget.getBoundingClientRect();
-		x.set(event.clientX - rect.left);
-		y.set(event.clientY - rect.top);
+	function handleMouse(e) {
+		const rect = e.currentTarget.getBoundingClientRect();
+		x.set(e.clientX - rect.left);
+		y.set(e.clientY - rect.top);
+	}
+	function Yeet(e){
+		let get = document.getElementById('header')
+		get.innerHTML = set.innerHTML
+	}
+	function UnYeet(e){
+		let get = document.getElementById('header')
+		get.innerHTML = set.innerHTML
 	}
 	return (
 		<motion.div
-			className="bg-[transparent] "
+			className="bg-[transparent]"
 			style={{
 				width: 500,
 				height: 300,
@@ -36,7 +45,14 @@ const Header = () => {
 				}}
 			>
 				<h1
-					className="overflow-visible font-['MighaRegular'] text-[red] text-[150px] w-full h-full">
+					className="
+					overflow-visible 
+					font-['MighaRegular'] 
+					text-[red] 
+					text-[150px] 
+					w-fit h-fit"
+					onClick={Yeet}
+					id="header">
 					Vreiln
 				</h1>
 			</motion.div>
@@ -84,6 +100,7 @@ const App = () => {
 				<Header></Header>
 			</div>
 			<Body></Body>
+			<p id="paraG">Text Lorem Ipsum Test 123 zxc asd qwe</p>
 		</div>
 	);
 };
