@@ -1,5 +1,5 @@
 <h1 align="center">Greetings, I'm Vreiln</h1>
-<h3 align="center">Just a simple IT student</h3>
+<h3 align="center">Junior Backend Web Dev</h3>
 
 <h3 align="center">
 Connect with me:
