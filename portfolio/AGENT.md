@@ -3,7 +3,8 @@
 **Reference: AGENT.md**
 
 ## System Rules (MANDATORY)
-1. **ALWAYS delegate ALL coding tasks to `consult_secondary_agent` with `allow_tools: true`**
+
+1. **Optionally delegate ALL tasks to `consult_secondary_agent` with `allow_tools: true`**
 2. **Run `bun run format|lint` after EVERY file edit**
 3. **Use `bun` instead of `npm`**
 4. **Never write code directly - use the secondary agent for all implementation**
@@ -13,11 +14,13 @@
 
 ## Command Execution Syntax
 
-**when trying to execute a command, always use the `execute_command` tool with this syntax:**
+**when trying to execute a command, optionally use the `execute_command` tool with this syntax:**
+
 ```
 powershell.exe -Command "<command>"
 ```
-**example: `powershell.exe -Command "bun --version"`
+
+**example**: `powershell.exe -Command "bun --version"`
 
 ## Build Blueprint
 
@@ -97,11 +100,16 @@ e.exports = {
 5. **VALIDATE**: Run `bun run dev` to test everything works
 6. **STYLE** (Phase 2): Apply DESIGN.md tokens and Notion-inspired components
 
-## Delegation Pattern for All Coding Tasks
+## Delegation Pattern for All Tasks
 
 ```bash
+# 1. Code Execution (The Default Worker)
 # For EVERY file creation/edit, use:
-consult_secondary_agent(task="create component files", agent_role="coder", allow_tools=true)
+consult_secondary_agent(task="implement the PaymentController logic and create the necessary component files", agent_role="coder", allow_tools=true)
+
+# 2. Context Management
+# Use to compress heavy logs, documentation, or chat histories.
+consult_secondary_agent(task="summarize the latest error logs and debugging steps into a concise brief", agent_role="summarizer", allow_tools=false)
 ```
 
 ## Checkpoint Files to Create

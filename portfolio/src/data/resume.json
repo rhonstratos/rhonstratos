@@ -1,0 +1,102 @@
+{
+  "name": "Ronald Dy Tioco Jr",
+  "title": "Senior Full-Stack Software Developer",
+  "contact": {
+    "phone": "+63 966 708 3023",
+    "email": "ronald.dytioco.work@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/rhonstratos"
+  },
+  "summary": "Strategic Senior Software Developer with extensive expertise in architecting scalable full-stack applications and managing complex cloud ecosystems (AWS & Microsoft Azure). Specialized in bridging high-performance back-end architectures with sophisticated, reactive front-end interfaces. Proven track record of delivering high-availability solutions for major educational and social service clients within Agile environments, driving technical excellence throughout the full Software Development Life Cycle (SDLC).",
+  "experience": [
+    {
+      "company": "Cyberland International Education Centre",
+      "location": "Singapore (Remote)",
+      "role": "Senior Software Developer",
+      "period": "November 2023 – Present",
+      "responsibilities": [
+        "Full-Stack Architecture: Spearhead end-to-end development of scalable web applications using Laravel and Angular, focusing on optimizing system processing efficiency.",
+        "Cloud Infrastructure & High Availability: Architect and manage robust cloud environments utilizing AWS (EC2, S3, RDS) and Microsoft Azure to ensure high availability for international user bases.",
+        "Reactive Programming: Implement advanced asynchronous patterns with RxJS to optimize front-end state management and enhance user interface responsiveness.",
+        "Design-to-Code Workflow: Collaborate closely with UI/UX designers via Figma to translate complex wireframes into high-fidelity, responsive components, accelerating the development lifecycle.",
+        "API & Integration Management: Streamline data exchange through rigorous API design and Postman testing, improving cross-service reliability and system integration."
+      ],
+      "clients": [
+        {
+          "name": "AWWA (Social Service Client)",
+          "projects": [
+            "Special Education School (School)",
+            "Special Student Care Centre (SSCC)",
+            "Early Intervention Continuum (EIC)"
+          ]
+        },
+        {
+          "name": "Fei Yue (Educational Client)",
+          "projects": [
+            "Early Intervention Programme for Infants and Children (EIPIC)"
+          ]
+        },
+        {
+          "name": "WeCAN",
+          "projects": ["EIP Student Information System (WeCAN)"]
+        }
+      ]
+    },
+    {
+      "company": "Accenture",
+      "location": "Philippines",
+      "role": "Software Development Intern",
+      "period": "January 2023 – May 2023",
+      "responsibilities": [
+        "Contributed to the development of enterprise-grade frontend and backend features within a professional SDLC framework.",
+        "Participated in daily Agile stand-ups and collaborative sprints, contributing to the successful delivery of project milestones."
+      ]
+    }
+  ],
+  "skills": {
+    "Frontend Engineering": [
+      "Angular",
+      "React.js",
+      "React Native",
+      "RxJS",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Responsive Web Design",
+      "Figma",
+      "User Interface Optimization"
+    ],
+    "Backend & Database": [
+      "PHP",
+      "Laravel",
+      "RESTful API Development",
+      "SQL",
+      "Database Schema Design",
+      "Postman (API Testing)"
+    ],
+    "Cloud, DevOps & Infrastructure": [
+      "AWS (EC2, ECS, RDS, S3, CloudFront, VPC)",
+      "Scalable Architecture",
+      "Azure",
+      "Microsoft Graph",
+      "Dynamics 365 Business Central",
+      "Docker",
+      "Agile/Scrum",
+      "Jira",
+      "Unit Testing",
+      "CI/CD",
+      "Web Hosting"
+    ]
+  },
+  "education": [
+    {
+      "institution": "Bulacan State University",
+      "degree": "Bachelor of Science in Information Technology",
+      "period": "August 2019 – June 2023"
+    }
+  ],
+  "certifications": [
+    "Angular Mastery",
+    "Modern Web Design (Flexbox/Grid)",
+    "Web Fundamentals"
+  ]
+}
