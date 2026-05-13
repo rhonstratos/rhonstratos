@@ -19,26 +19,28 @@ export default function App() {
       {/* Sticky Navigation */}
       <Header />
 
-      {/* Hero Section with Name, Title, Summary */}
-      <Hero name={resume.name} title={resume.title} summary={resume.summary} />
+      <main>
+        {/* Hero Section with Name, Title, Summary */}
+        <Hero name={resume.name} title={resume.title} summary={resume.summary} />
 
-      {/* About Section */}
-      <About bio={resume.about.bio} stats={resume.about.stats} />
+        {/* About Section */}
+        <About bio={resume.about.bio} stats={resume.about.stats} />
 
-      {/* Experience Section */}
-      <ExperienceList experience={resume.experience} />
+        {/* Experience Section */}
+        <ExperienceList experience={resume.experience} />
 
-      {/* Skills Grid */}
-      <SkillsGrid skills={resume.skills} />
+        {/* Skills Grid */}
+        <SkillsGrid skills={resume.skills} />
 
-      {/* Education Section */}
-      <EducationSection education={resume.education} />
+        {/* Education Section */}
+        <EducationSection education={resume.education} />
 
-      {/* <Certifications Section */}
-      {/* <CertificationSection certifications={resume.certifications} /> */}
+        {/* <Certifications Section */}
+        {/* <CertificationSection certifications={resume.certifications} /> */}
 
-      {/* Contact Section */}
-      <ContactSection contact={resume.contact} />
+        {/* Contact Section */}
+        <ContactSection contact={resume.contact} />
+      </main>
 
       {/* Footer */}
       <Footer />

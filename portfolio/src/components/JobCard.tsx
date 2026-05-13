@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Cloud, Code, FileText } from "lucide-react";
 
 export default function JobCard({
@@ -20,23 +19,17 @@ export default function JobCard({
   }>;
 }) {
   return (
-    <motion.div
+    <div
       id={`${company}-job-card`}
       role="article"
-      className={`rounded-lg border border-hairline bg-surface p-lg relative ${
+      className={`rounded-lg border border-hairline bg-surface p-lg relative transition-all duration-250 hover:-translate-y-1 hover:shadow-lg ${
         responsibilities.length > 3 ? "shadow-card" : ""
       }`}
-      whileHover={{ y: -4, boxShadow: "rgba(15,15,15,0.12) 0px 8px 24px 0px" }}
-      transition={{ duration: 0.25, ease: "easeOut" as const }}
     >
-      <motion.svg
-        className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary to-transparent"
+      <svg
+        className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary to-transparent animate-scale-in"
         aria-hidden="true"
-        style={{ overflow: "visible" }}
-        initial={{ scaleX: 0, originX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeOut" as const, delay: 0.2 }}
+        style={{ overflow: "visible", transformOrigin: "0% 50%" }}
       />
 
       <div className="flex items-start gap-4 mb-6">
@@ -69,25 +62,16 @@ export default function JobCard({
       </div>
 
       {clients.length > 0 && (
-        <motion.div
-          className="mb-6 bg-canvas rounded-lg p-xl border border-hairline"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: "easeOut" as const, delay: 0.1 }}
-        >
+        <div className="mb-6 bg-canvas rounded-lg p-xl border border-hairline animate-fade-in-up">
           <h3 className="text-heading-5 text-brand_navy mb-sm font-sans">
             Featured Clients &amp; Projects
           </h3>
           <div className="flex flex-col gap-sm">
             {clients.map((client, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                className="flex flex-col sm:flex-row gap-xxs sm:gap-md"
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, ease: "easeOut" as const, delay: idx * 0.08 }}
+                className={`flex flex-col sm:flex-row gap-xxs sm:gap-md animate-slide-in-right`}
+                style={{ animationDelay: `${idx * 0.08}s` }}
               >
                 <span className="text-body-md-medium text-charcoal font-sans flex-shrink-0 min-w-[200px]">
                   {client.name}
@@ -102,22 +86,18 @@ export default function JobCard({
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       )}
 
       <ul className="space-y-sm mb-8">
         {responsibilities.map((item, idx) => (
-          <motion.li
+          <li
             key={company + item}
-            className="flex items-start gap-3 group hover:bg-surface_soft rounded-lg p-xxs -ml-xxs transition-colors"
-            initial={{ opacity: 0, x: -15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.35, ease: "easeOut" as const, delay: idx * 0.06 }}
-            whileHover={{ x: 4, transition: { duration: 0.15 } }}
+            className="flex items-start gap-3 group hover:bg-surface_soft hover:translate-x-1 rounded-lg p-xxs -ml-xxs transition-all duration-200 animate-slide-in-right"
+            style={{ animationDelay: `${idx * 0.06}s` }}
           >
             {(idx % 4 === 0 && (
               <Code className="w-5 h-5 text-primary flex-shrink-0 mt-[2px]" />
@@ -130,9 +110,9 @@ export default function JobCard({
             <span className="text-stone leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
               {item}
             </span>
-          </motion.li>
+          </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 }

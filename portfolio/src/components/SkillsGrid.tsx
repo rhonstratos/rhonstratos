@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
 import { Code, FileText, Cloud } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+
+const delays = ["", "animate-delay-200", "animate-delay-400"];
 
 export default function SkillsGrid({
   skills,
@@ -14,13 +15,9 @@ export default function SkillsGrid({
       aria-labelledby="skills-heading-label"
       className="py-section-sm md:py-section bg-surface relative overflow-hidden"
     >
-      <motion.div
-        className="absolute bottom-0 right-8 opacity-[0.07] pointer-events-none"
+      <div
+        className="absolute bottom-0 right-8 opacity-[0.07] pointer-events-none animate-scale-in"
         aria-hidden="true"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" as const }}
       >
         <svg width="200" height="100">
           <rect
@@ -34,7 +31,7 @@ export default function SkillsGrid({
             }}
           />
         </svg>
-      </motion.div>
+      </div>
 
       <AnimatedSection className="px-6">
         <h2
@@ -47,20 +44,15 @@ export default function SkillsGrid({
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-lg max-w-full mx-auto px-6">
         {Object.entries(skills).map(([category, technologies], idx) => (
-          <motion.div
+          <div
             key={category}
-            className={`rounded-lg border border-hairline p-lg md:p-xxl ${
+            className={`rounded-lg border border-hairline p-lg md:p-xxl transition-transform duration-200 hover:-translate-y-1 ${
               idx === 0
                 ? "bg-card-tint-peach"
                 : idx === 1
                   ? "bg-card-tint-rose"
                   : "bg-card-tint-mint"
-            }`}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.5, ease: "easeOut" as const, delay: idx * 0.15 }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            } animate-fade-in-up ${delays[idx] || ""}`}
           >
             <h3
               id={`${category}-heading`}
@@ -71,14 +63,10 @@ export default function SkillsGrid({
 
             <ul className="space-y-2">
               {technologies.map((tech, techIdx) => (
-                <motion.li
+                <li
                   key={tech}
-                  className="flex items-center gap-xs group hover:bg-surface_soft rounded-lg p-xxs -ml-xxs transition-colors"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: techIdx * 0.03, duration: 0.25, ease: "easeOut" as const }}
-                  whileHover={{ x: 3, transition: { duration: 0.15 } }}
+                  className="flex items-center gap-xs group hover:bg-surface_soft hover:translate-x-0.5 rounded-lg p-xxs -ml-xxs transition-all duration-200 animate-slide-in-right"
+                  style={{ animationDelay: `${techIdx * 0.03}s` }}
                 >
                   {(idx % 3 === 0 && (
                     <Code
@@ -97,10 +85,10 @@ export default function SkillsGrid({
                   <span className="text-stone leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
                     {tech}
                   </span>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

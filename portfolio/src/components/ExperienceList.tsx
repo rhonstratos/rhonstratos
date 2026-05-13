@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
 import JobCard from "./JobCard";
 import AnimatedSection from "./AnimatedSection";
+
+const delays = ["", "animate-delay-200", "animate-delay-400"];
 
 export default function ExperienceList({
   experience,
@@ -22,13 +23,9 @@ export default function ExperienceList({
       id="experience"
       className="py-section-sm md:py-section bg-surface_soft relative overflow-hidden"
     >
-      <motion.div
-        className="absolute top-0 right-0 w-96 h-96 opacity-5 pointer-events-none"
+      <div
+        className="absolute top-0 right-0 w-96 h-96 opacity-5 pointer-events-none animate-scale-in"
         aria-hidden="true"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeOut" as const }}
       >
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <circle
@@ -39,7 +36,7 @@ export default function ExperienceList({
             style={{ filter: "drop-shadow(0px 2px 3px rgba(86,69,212,0.1))" }}
           />
         </svg>
-      </motion.div>
+      </div>
 
       <AnimatedSection className="px-6">
         <h2
@@ -52,15 +49,12 @@ export default function ExperienceList({
 
       <div className="grid grid-cols-1 gap-xl max-w-full mx-auto px-6">
         {experience.map((job, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, ease: "easeOut" as const, delay: index * 0.15 }}
+            className={`animate-fade-in-up ${delays[index] || "animate-delay-400"}`}
           >
             <JobCard {...job} />
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

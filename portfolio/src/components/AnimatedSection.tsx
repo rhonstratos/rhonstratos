@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 export default function AnimatedSection({
@@ -10,22 +10,27 @@ export default function AnimatedSection({
   className?: string;
   delay?: number;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { rootMargin: "-80px" },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.6, ease: "easeOut" as const, delay },
-        },
-      }}
-      className={className}
+    <div
+      ref={ref}
+      className={`${className || ""} ${visible ? "animate-fade-in-up" : "opacity-0"}`}
+      style={{ animationDelay: `${delay}s` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
