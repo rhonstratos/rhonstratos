@@ -56,7 +56,7 @@ export default function Hero({
         </p>
 
         <div className="max-w-4xl mx-auto animate-fade-in-up animate-delay-400">
-          <p className="text-body-md text-stone font-sans leading-[1.55]">
+          <p className="text-body-md text-on-dark-muted font-sans leading-[1.55]">
             {summary}
           </p>
         </div>

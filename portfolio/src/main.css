@@ -33,12 +33,12 @@
   --color-card-tint-peach: var(--_card-tint-peach);
   --color-card-tint-rose: var(--_card-tint-rose);
   --color-card-tint-mint: var(--_card-tint-mint);
-  --color-card-tint-lavender: #e6e0f5;
-  --color-card-tint-sky: #dcecfa;
-  --color-card-tint-yellow: #fef7d6;
-  --color-card-tint-yellow-bold: #f9e79f;
-  --color-card-tint-cream: #f8f5e8;
-  --color-card-tint-gray: #f0eeec;
+  --color-card-tint-lavender: var(--_card-tint-lavender);
+  --color-card-tint-sky: var(--_card-tint-sky);
+  --color-card-tint-yellow: var(--_card-tint-yellow);
+  --color-card-tint-yellow-bold: var(--_card-tint-yellow-bold);
+  --color-card-tint-cream: var(--_card-tint-cream);
+  --color-card-tint-gray: var(--_card-tint-gray);
 
   /* Canvas & Surface */
   --color-canvas: var(--_canvas);
@@ -162,6 +162,12 @@
   --_card-tint-peach: #ffe8d4;
   --_card-tint-rose: #fde0ec;
   --_card-tint-mint: #d9f3e1;
+  --_card-tint-lavender: #e6e0f5;
+  --_card-tint-sky: #dcecfa;
+  --_card-tint-yellow: #fef7d6;
+  --_card-tint-yellow-bold: #f9e79f;
+  --_card-tint-cream: #f8f5e8;
+  --_card-tint-gray: #f0eeec;
   --_canvas: #ffffff;
   --_surface: #f6f5f4;
   --_surface-soft: #fafaf9;
@@ -179,10 +185,16 @@
 
 .dark {
   --_brand-navy: #e0e0e6;
-  --_primary: #7b6bee;
+  --_primary: #6a5ad0;
   --_card-tint-peach: #2a1e14;
   --_card-tint-rose: #2a141e;
   --_card-tint-mint: #142a1e;
+  --_card-tint-lavender: #1e142a;
+  --_card-tint-sky: #141e2a;
+  --_card-tint-yellow: #1e1a0e;
+  --_card-tint-yellow-bold: #2a2208;
+  --_card-tint-cream: #181612;
+  --_card-tint-gray: #1a1a1f;
   --_canvas: #0f0f15;
   --_surface: #18181f;
   --_surface-soft: #12121a;

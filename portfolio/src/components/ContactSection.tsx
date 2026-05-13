@@ -37,7 +37,6 @@ export default function ContactSection({
   return (
     <section
       id="contact"
-      role="region"
       aria-labelledby="contact-region-label"
       className="py-section-sm md:py-section bg-surface relative overflow-hidden"
     >
