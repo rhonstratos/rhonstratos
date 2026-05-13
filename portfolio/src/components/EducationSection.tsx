@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import AnimatedSection from "./AnimatedSection";
+
 export default function EducationSection({
   education,
 }: {
@@ -19,23 +22,28 @@ export default function EducationSection({
         aria-hidden="true"
       />
 
-      <div className="px-6">
+      <AnimatedSection className="px-6">
         <h2
           id="education-heading"
           className="text-heading-3 md:text-heading-2 text-brand_navy mb-6 md:mb-8 font-sans"
         >
           Education
         </h2>
-      </div>
+      </AnimatedSection>
 
       <div className="max-w-full mx-auto px-6 grid gap-xl max-w-4xl">
-        <div
+        <motion.div
           id={`${education[0]?.institution}-card`}
           role="article"
           aria-labelledby={`${education[0]?.institution}-heading`}
           className={`rounded-lg p-xl border border-hairline ${
             education.length > 1 ? "bg-card-tint-mint text-charcoal" : "bg-canvas"
           }`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" as const }}
+          whileHover={{ y: -3, transition: { duration: 0.2 } }}
         >
           <h3
             id={`${education[0]?.institution}-heading`}
@@ -53,7 +61,7 @@ export default function EducationSection({
           >
             {education[0]?.period || ""}
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ export default function App() {
       <Hero name={resume.name} title={resume.title} summary={resume.summary} />
 
       {/* About Section */}
-      <About />
+      <About bio={resume.about.bio} stats={resume.about.stats} />
 
       {/* Experience Section */}
       <ExperienceList experience={resume.experience} />

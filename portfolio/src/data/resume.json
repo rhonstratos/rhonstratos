@@ -7,6 +7,15 @@
     "linkedin": "https://www.linkedin.com/in/rhonstratos"
   },
   "summary": "Strategic Senior Software Developer with extensive expertise in architecting scalable full-stack applications and managing complex cloud ecosystems (AWS & Microsoft Azure). Specialized in bridging high-performance back-end architectures with sophisticated, reactive front-end interfaces. Proven track record of delivering high-availability solutions for major educational and social service clients within Agile environments, driving technical excellence throughout the full Software Development Life Cycle (SDLC).",
+  "about": {
+    "bio": "I'm a passionate software developer with experience building modern web applications using various frameworks and technologies. My work focuses on creating performant, accessible user experiences that are both beautiful and functional.",
+    "stats": [
+      { "value": "3+", "label": "Years Experience" },
+      { "value": "25+", "label": "Projects Completed" },
+      { "value": "5+", "label": "Clients Served" },
+      { "value": "4.9", "label": "Client Rating" }
+    ]
+  },
   "experience": [
     {
       "company": "Cyberland International Education Centre",
