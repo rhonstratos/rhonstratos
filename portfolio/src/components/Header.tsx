@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-const links = ["Home", "About", "Experience", "Skills", "Education", "Contact"];
+const links = ["Home", "About", "Experience", "Skills", "Education", "Contact", "Resume"];
 
 function SunIcon() {
   return <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>;
@@ -77,15 +77,19 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex gap-8">
-          {links.map((link) => (
-            <a
-              key={link}
-              href={link === "Home" ? "#home" : `#${link.toLowerCase()}`}
-              className="text-slate hover:text-brand_navy font-medium text-body-sm font-sans whitespace-nowrap py-2 transition-all duration-150 hover:scale-105 active:scale-95"
-            >
-              {link}
-            </a>
-          ))}
+          {links.map((link) => {
+            const isResume = link === "Resume";
+            return (
+              <a
+                key={link}
+                href={isResume ? `${import.meta.env.BASE_URL}resume.pdf` : link === "Home" ? "#home" : `#${link.toLowerCase()}`}
+                {...(isResume ? { target: "_blank", rel: "noopener noreferrer", download: true } : {})}
+                className="text-slate hover:text-brand_navy font-medium text-body-sm font-sans whitespace-nowrap py-2 transition-all duration-150 hover:scale-105 active:scale-95"
+              >
+                {link}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -114,16 +118,20 @@ export default function Header() {
       {menuOpen && (
         <div ref={menuRef} className="lg:hidden border-t border-hairline bg-canvas animate-fade-in">
           <nav className="flex flex-col px-4 py-3 gap-1">
-            {links.map((link) => (
-              <a
-                key={link}
-                href={link === "Home" ? "#home" : `#${link.toLowerCase()}`}
-                onClick={() => setMenuOpen(false)}
-                className="text-slate hover:text-brand_navy font-medium text-body-sm font-sans px-3 py-2.5 rounded-md hover:bg-surface transition-colors"
-              >
-                {link}
-              </a>
-            ))}
+            {links.map((link) => {
+              const isResume = link === "Resume";
+              return (
+                <a
+                  key={link}
+                href={isResume ? `${import.meta.env.BASE_URL}resume.pdf` : link === "Home" ? "#home" : `#${link.toLowerCase()}`}
+                  {...(isResume ? { target: "_blank", rel: "noopener noreferrer", download: true } : {})}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-slate hover:text-brand_navy font-medium text-body-sm font-sans px-3 py-2.5 rounded-md hover:bg-surface transition-colors"
+                >
+                  {link}
+                </a>
+              );
+            })}
           </nav>
         </div>
       )}
