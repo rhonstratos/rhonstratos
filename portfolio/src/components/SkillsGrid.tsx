@@ -11,7 +11,6 @@ export default function SkillsGrid({
   return (
     <section
       id="skills"
-      role="region"
       aria-labelledby="skills-heading-label"
       className="py-section-sm md:py-section bg-surface relative overflow-hidden"
     >
@@ -82,7 +81,7 @@ export default function SkillsGrid({
                         className="w-5 h-5 text-brand_teal flex-shrink-0 mt-[2px]"
                       />
                     )}
-                  <span className="text-stone leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
+                  <span className="text-charcoal leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
                     {tech}
                   </span>
                 </li>

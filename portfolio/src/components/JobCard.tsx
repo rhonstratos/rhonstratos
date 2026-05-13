@@ -43,11 +43,11 @@ export default function JobCard({
             {company}
           </p>
 
-          <p className="text-body-sm text-stone font-sans truncate">
+          <p className="text-body-sm text-slate font-sans truncate">
             {role}
           </p>
 
-          <div className="flex flex-wrap items-center gap-x-2 text-body-sm text-muted font-sans mt-1">
+          <div className="flex flex-wrap items-center gap-x-2 text-body-sm text-steel font-sans mt-1">
             <span className="inline-flex items-center gap-1">
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               {location}
@@ -107,7 +107,7 @@ export default function JobCard({
               )) || (
                 <Cloud className="w-5 h-5 text-brand_teal flex-shrink-0 mt-[2px]" />
               )}
-            <span className="text-stone leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
+            <span className="text-charcoal leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
               {item}
             </span>
           </li>

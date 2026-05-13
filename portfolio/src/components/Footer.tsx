@@ -34,7 +34,7 @@ export default function Footer() {
         </a>
       </div>
 
-      <p className="text-center text-caption text-muted font-sans">
+        <p className="text-center text-caption text-steel font-sans">
         &copy; {new Date().getFullYear()} Ronald Dy Tioco Jr. All rights reserved.
       </p>
     </footer>

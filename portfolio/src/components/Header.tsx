@@ -67,13 +67,13 @@ export default function Header() {
         Skip to main content
       </a>
       <div className="container mx-auto px-4 md:px-xl py-4 flex items-center justify-between gap-2">
-        <h1
+        <span
           role="img"
           aria-label="Ron Dy Tioco Jr. - portfolio logo and brand name"
           className="text-xl md:text-2xl font-semibold tracking-tight text-brand_navy font-sans cursor-default transition-transform duration-150 hover:scale-105 active:scale-95"
         >
           RD
-        </h1>
+        </span>
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex gap-8">

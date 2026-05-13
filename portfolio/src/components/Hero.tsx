@@ -51,7 +51,7 @@ export default function Hero({
           {name}
         </h1>
 
-        <p className="text-subtitle text-steel font-sans animate-fade-in-up animate-delay-200">
+        <p className="text-subtitle text-on-dark-muted font-sans animate-fade-in-up animate-delay-200">
           {title}
         </p>
 

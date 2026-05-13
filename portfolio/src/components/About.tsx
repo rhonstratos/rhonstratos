@@ -40,7 +40,7 @@ export default function About({
           About Me
         </h2>
 
-        <p className="text-body-md text-stone leading-[1.7] font-sans animate-fade-in-up animate-delay-200">
+        <p className="text-body-md text-slate leading-[1.7] font-sans animate-fade-in-up animate-delay-200">
           {bio}
         </p>
 
@@ -51,7 +51,7 @@ export default function About({
               className={`animate-fade-in-up ${delays[i]} transition-transform duration-200 hover:-translate-y-1`}
             >
               <span className="text-3xl font-bold text-brand_navy">{stat.value}</span>
-              <p className="text-body-sm text-stone mt-1">{stat.label}</p>
+              <p className="text-body-sm text-slate mt-1">{stat.label}</p>
             </div>
           ))}
         </div>

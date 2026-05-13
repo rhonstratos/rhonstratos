@@ -12,7 +12,6 @@ export default function EducationSection({
   return (
     <section
       id="education"
-      role="region"
       aria-labelledby="education-region-label"
       className="py-section-sm md:py-section bg-surface relative overflow-hidden"
     >
@@ -45,7 +44,7 @@ export default function EducationSection({
           >
             {education[0]?.institution || ""}
           </h3>
-          <p className="text-body-md-medium text-stone mb-1 font-sans">
+          <p className="text-body-md-medium text-slate mb-1 font-sans">
             {education[0]?.degree || ""}
           </p>
           <p
