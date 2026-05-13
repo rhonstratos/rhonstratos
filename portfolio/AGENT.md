@@ -98,3 +98,13 @@ consult_secondary_agent(task="create component files", agent_role="coder", allow
 - src/data/ - Resume data extracted from resume.md
 - public/images/ - Placeholder assets
 - tailwind.config.ts - DESIGN.md color integration (Phase 2)
+
+## IMPORTANT ARCHITECTURE NOTES
+
+### Static SPA (Single Page Application)
+- **No backend required** - pure client-side React application
+- Deployed to any static hosting: GitHub Pages, Vercel, Netlify, Cloudflare Pages, etc.
+- Uses Vite for fast HMR and optimized builds (`bun run build`)
+- No server-side rendering or API routes needed
+- All data comes from local JSON files (resume.json) or environment variables
+- SEO-friendly: can be made static HTML-exported if desired in future
