@@ -1,4 +1,4 @@
-# Simple workflow for building and deploying a React app to GitHub Pages
+# Simple workflow for building and deploying a React app to GitHub Pages using Bun
 name: Deploy React App to Pages
 
 on:
@@ -30,18 +30,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20 # You can change this if you need a specific Node version
+          bun-version: latest
 
       - name: Install dependencies
         working-directory: ./portfolio
-        run: npm install
+        run: bun install
 
       - name: Build project
         working-directory: ./portfolio
-        run: npm run build
+        run: bun run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -49,7 +49,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # IMPORTANT: Point this to your build output folder
+          # IMPORTANT: Point this to your build output folder (usually 'dist' for Vite, 'build' for CRA)
           path: './portfolio/dist' 
 
       - name: Deploy to GitHub Pages
