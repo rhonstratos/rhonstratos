@@ -1,15 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const links = ["Home", "About", "Experience", "Skills", "Education", "Contact"];
 
+function SunIcon() {
+  return <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>;
+}
+
+function MoonIcon() {
+  return <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>;
+}
+
+function MenuIcon() {
+  return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>;
+}
+
+function CloseIcon() {
+  return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>;
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [menuOpen]);
+
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.theme = next ? "dark" : "light";
+  };
 
   return (
     <header
@@ -27,7 +66,7 @@ export default function Header() {
       >
         Skip to main content
       </a>
-      <div className="container mx-auto px-4 md:px-xl py-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-xl py-4 flex items-center justify-between gap-2">
         <h1
           role="img"
           aria-label="Ron Dy Tioco Jr. - portfolio logo and brand name"
@@ -36,7 +75,8 @@ export default function Header() {
           RD
         </h1>
 
-        <nav className="flex gap-3 lg:gap-8 overflow-x-auto hide-scrollbar">
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex gap-8">
           {links.map((link) => (
             <a
               key={link}
@@ -47,7 +87,46 @@ export default function Header() {
             </a>
           ))}
         </nav>
+
+        <div className="flex items-center gap-2">
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-md text-slate hover:text-brand_navy dark:text-steel dark:hover:text-on-dark transition-colors"
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {dark ? <SunIcon /> : <MoonIcon />}
+          </button>
+
+          {/* Hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden p-2 rounded-md text-slate hover:text-brand_navy transition-colors"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div ref={menuRef} className="lg:hidden border-t border-hairline bg-canvas animate-fade-in">
+          <nav className="flex flex-col px-4 py-3 gap-1">
+            {links.map((link) => (
+              <a
+                key={link}
+                href={link === "Home" ? "#home" : `#${link.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="text-slate hover:text-brand_navy font-medium text-body-sm font-sans px-3 py-2.5 rounded-md hover:bg-surface transition-colors"
+              >
+                {link}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Primary & Brand */
   --color-primary: #5645d4;
@@ -39,21 +41,21 @@
   --color-card-tint-gray: #f0eeec;
 
   /* Canvas & Surface */
-  --color-canvas: #ffffff;
-  --color-surface: #f6f5f4;
-  --color-surface_soft: #fafaf9;
-  --color-hairline: #e5e3df;
-  --color-hairline-soft: #ede9e4;
-  --color-hairline-strong: #c8c4be;
+  --color-canvas: var(--_canvas);
+  --color-surface: var(--_surface);
+  --color-surface_soft: var(--_surface-soft);
+  --color-hairline: var(--_hairline);
+  --color-hairline-soft: var(--_hairline-soft);
+  --color-hairline-strong: var(--_hairline-strong);
 
   /* Text */
-  --color-ink_deep: #000000;
-  --color-ink: #1a1a1a;
-  --color-charcoal: #37352f;
-  --color-slate: #5d5b54;
-  --color-steel: #787671;
-  --color-stone: #a4a097;
-  --color-muted: #bbb8b1;
+  --color-ink_deep: var(--_ink-deep);
+  --color-ink: var(--_ink);
+  --color-charcoal: var(--_charcoal);
+  --color-slate: var(--_slate);
+  --color-steel: var(--_steel);
+  --color-stone: var(--_stone);
+  --color-muted: var(--_muted);
   --color-on-dark: #ffffff;
   --color-on-dark-muted: #a4a097;
 
@@ -151,6 +153,38 @@
   --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
   --shadow-mockup: rgba(15, 15, 15, 0.2) 0px 24px 48px -8px;
   --shadow-modal: rgba(15, 15, 15, 0.16) 0px 16px 48px -8px;
+}
+
+:root {
+  --_canvas: #ffffff;
+  --_surface: #f6f5f4;
+  --_surface-soft: #fafaf9;
+  --_hairline: #e5e3df;
+  --_hairline-soft: #ede9e4;
+  --_hairline-strong: #c8c4be;
+  --_ink-deep: #000000;
+  --_ink: #1a1a1a;
+  --_charcoal: #37352f;
+  --_slate: #5d5b54;
+  --_steel: #787671;
+  --_stone: #a4a097;
+  --_muted: #bbb8b1;
+}
+
+.dark {
+  --_canvas: #0f0f15;
+  --_surface: #18181f;
+  --_surface-soft: #12121a;
+  --_hairline: #2a2a35;
+  --_hairline-soft: #22222e;
+  --_hairline-strong: #3a3a48;
+  --_ink-deep: #f0f0f0;
+  --_ink: #e0e0e0;
+  --_charcoal: #c8c8c8;
+  --_slate: #a0a0b0;
+  --_steel: #787890;
+  --_stone: #5a5a70;
+  --_muted: #3a3a50;
 }
 
 @keyframes fade-in-up {
