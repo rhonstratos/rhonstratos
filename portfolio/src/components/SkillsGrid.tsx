@@ -69,16 +69,16 @@ export default function SkillsGrid({
                 >
                   {(idx % 3 === 0 && (
                     <Code
-                      className="w-5 h-5 text-primary flex-shrink-0 mt-[2px]"
+                      className="w-5 h-5 text-primary shrink-0 mt-0.5"
                     />
                   )) ||
                     (idx % 3 === 1 && (
                       <FileText
-                        className="w-5 h-5 text-brand_pink flex-shrink-0 mt-[2px]"
+                        className="w-5 h-5 text-brand_pink shrink-0 mt-0.5"
                       />
                     )) || (
                       <Cloud
-                        className="w-5 h-5 text-brand_teal flex-shrink-0 mt-[2px]"
+                        className="w-5 h-5 text-brand_teal shrink-0 mt-0.5"
                       />
                     )}
                   <span className="text-charcoal leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">

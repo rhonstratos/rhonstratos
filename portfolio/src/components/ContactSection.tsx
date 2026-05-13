@@ -70,9 +70,9 @@ export default function ContactSection({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-lg max-w-full mx-auto px-6">
         <a
           href={`tel:${contact.phone}`}
-          className="flex items-center gap-4 p-lg rounded-lg bg-canvas border border-card-tint-sky transition-all duration-200 group relative overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-lg active:scale-[0.98]"
+          className="flex items-center gap-4 p-lg rounded-lg bg-canvas border border-card-tint-sky transition-all duration-200 group relative overflow-hidden hover:-translate-y-1 hover:shadow-hover active:scale-[0.98]"
         >
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-card-tint-sky to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-card-tint-sky to-transparent" />
 
           <div className="w-9 h-9 rounded-sm flex items-center justify-center bg-card-tint-sky text-brand_teal shrink-0">
             <PhoneIcon />
@@ -90,9 +90,9 @@ export default function ContactSection({
 
         <a
           href={`mailto:${contact.email}`}
-          className="flex items-center gap-4 p-lg rounded-lg bg-canvas border border-card-tint-lavender transition-all duration-200 group relative overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-lg active:scale-[0.98]"
+          className="flex items-center gap-4 p-lg rounded-lg bg-canvas border border-card-tint-lavender transition-all duration-200 group relative overflow-hidden hover:-translate-y-1 hover:shadow-hover active:scale-[0.98]"
         >
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-card-tint-lavender to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-card-tint-lavender to-transparent" />
 
           <div className="w-9 h-9 rounded-sm flex items-center justify-center bg-card-tint-lavender text-brand_purple shrink-0">
             <MailIcon />
@@ -112,9 +112,9 @@ export default function ContactSection({
           href={contact.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 p-lg rounded-lg bg-canvas border border-card-tint-peach transition-all duration-200 group relative overflow-hidden shadow-card hover:-translate-y-1 hover:shadow-lg active:scale-[0.98]"
+          className="flex items-center gap-4 p-lg rounded-lg bg-canvas border border-card-tint-peach transition-all duration-200 group relative overflow-hidden hover:-translate-y-1 hover:shadow-hover active:scale-[0.98]"
         >
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-card-tint-peach to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-card-tint-peach to-transparent" />
 
           <div className="w-9 h-9 rounded-sm flex items-center justify-center bg-card-tint-peach text-brand_orange shrink-0">
             <LinkedInIcon />

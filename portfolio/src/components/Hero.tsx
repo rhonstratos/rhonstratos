@@ -10,7 +10,7 @@ export default function Hero({
   return (
     <section
       id="home"
-      className="py-section-sm md:py-hero bg-brand_navy relative overflow-hidden"
+      className="py-section-sm md:py-hero bg-[#0a1530] relative overflow-hidden"
       aria-labelledby="hero-title"
     >
       <div

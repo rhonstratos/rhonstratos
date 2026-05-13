@@ -22,12 +22,12 @@ export default function JobCard({
     <div
       id={`${company}-job-card`}
       role="article"
-      className={`rounded-lg border border-hairline bg-surface p-lg relative transition-all duration-250 hover:-translate-y-1 hover:shadow-lg ${
+      className={`rounded-lg border border-hairline bg-surface p-lg relative transition-all duration-200 hover:-translate-y-1 hover:shadow-hover ${
         responsibilities.length > 3 ? "shadow-card" : ""
       }`}
     >
       <svg
-        className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary to-transparent animate-scale-in"
+        className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-primary to-transparent animate-scale-in"
         aria-hidden="true"
         style={{ overflow: "visible", transformOrigin: "0% 50%" }}
       />
@@ -35,7 +35,7 @@ export default function JobCard({
       <div className="flex items-start gap-4 mb-6">
         <Code
           key={company.toLowerCase()}
-          className="w-6 h-6 flex-shrink-0 mt-1"
+          className="w-6 h-6 text-primary shrink-0 mt-1"
         />
 
         <div className="min-w-0 flex-1">
@@ -73,14 +73,14 @@ export default function JobCard({
                 className={`flex flex-col sm:flex-row gap-xxs sm:gap-md animate-slide-in-right`}
                 style={{ animationDelay: `${idx * 0.08}s` }}
               >
-                <span className="text-body-md-medium text-charcoal font-sans flex-shrink-0 min-w-[200px]">
+                <span className="text-body-md-medium text-charcoal font-sans shrink-0 min-w-50">
                   {client.name}
                 </span>
                 <div className="flex flex-wrap gap-xs">
                   {client.projects.map((project, projIdx) => (
                     <span
                       key={projIdx}
-                      className="text-caption-bold text-brand-purple-800 bg-card-tint-lavender rounded-sm px-xs py-[2px] font-sans"
+                      className="text-caption-bold text-brand-purple-800 bg-card-tint-lavender rounded-sm px-xs py-0.5 font-sans"
                     >
                       {project}
                     </span>
@@ -100,12 +100,12 @@ export default function JobCard({
             style={{ animationDelay: `${idx * 0.06}s` }}
           >
             {(idx % 4 === 0 && (
-              <Code className="w-5 h-5 text-primary flex-shrink-0 mt-[2px]" />
+              <Code className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             )) ||
               (idx % 4 === 1 && (
-                <FileText className="w-5 h-5 text-brand_pink flex-shrink-0 mt-[2px]" />
+                <FileText className="w-5 h-5 text-brand_pink shrink-0 mt-0.5" />
               )) || (
-                <Cloud className="w-5 h-5 text-brand_teal flex-shrink-0 mt-[2px]" />
+                <Cloud className="w-5 h-5 text-brand_teal shrink-0 mt-0.5" />
               )}
             <span className="text-charcoal leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
               {item}

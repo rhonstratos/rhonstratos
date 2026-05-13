@@ -4,11 +4,11 @@
 
 @theme {
   /* Primary & Brand */
-  --color-primary: #5645d4;
+  --color-primary: var(--_primary);
   --color-primary-pressed: #4534b3;
   --color-primary-deep: #3a2a99;
   --color-onPrimary: #ffffff;
-  --color-brand_navy: #0a1530;
+  --color-brand_navy: var(--_brand-navy);
   --color-brand_navy-deep: #070f24;
   --color-brand_navy-mid: #1a2a52;
 
@@ -30,9 +30,9 @@
   --color-link-blue-pressed: #005bab;
 
   /* Card tints */
-  --color-card-tint-peach: #ffe8d4;
-  --color-card-tint-rose: #fde0ec;
-  --color-card-tint-mint: #d9f3e1;
+  --color-card-tint-peach: var(--_card-tint-peach);
+  --color-card-tint-rose: var(--_card-tint-rose);
+  --color-card-tint-mint: var(--_card-tint-mint);
   --color-card-tint-lavender: #e6e0f5;
   --color-card-tint-sky: #dcecfa;
   --color-card-tint-yellow: #fef7d6;
@@ -153,9 +153,15 @@
   --shadow-card: rgba(15, 15, 15, 0.08) 0px 4px 12px 0px;
   --shadow-mockup: rgba(15, 15, 15, 0.2) 0px 24px 48px -8px;
   --shadow-modal: rgba(15, 15, 15, 0.16) 0px 16px 48px -8px;
+  --shadow-hover: rgba(15, 15, 15, 0.12) 0px 8px 24px 0px;
 }
 
 :root {
+  --_brand-navy: #0a1530;
+  --_primary: #5645d4;
+  --_card-tint-peach: #ffe8d4;
+  --_card-tint-rose: #fde0ec;
+  --_card-tint-mint: #d9f3e1;
   --_canvas: #ffffff;
   --_surface: #f6f5f4;
   --_surface-soft: #fafaf9;
@@ -172,6 +178,11 @@
 }
 
 .dark {
+  --_brand-navy: #e0e0e6;
+  --_primary: #7b6bee;
+  --_card-tint-peach: #2a1e14;
+  --_card-tint-rose: #2a141e;
+  --_card-tint-mint: #142a1e;
   --_canvas: #0f0f15;
   --_surface: #18181f;
   --_surface-soft: #12121a;
@@ -182,9 +193,9 @@
   --_ink: #e0e0e0;
   --_charcoal: #c8c8c8;
   --_slate: #a0a0b0;
-  --_steel: #787890;
-  --_stone: #5a5a70;
-  --_muted: #3a3a50;
+  --_steel: #9a9ab0;
+  --_stone: #6a6a80;
+  --_muted: #5a5a70;
 }
 
 @keyframes fade-in-up {

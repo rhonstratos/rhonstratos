@@ -38,7 +38,7 @@ export default function CertificationSection({
             className="flex items-center gap-4 p-lg bg-surface_soft rounded-lg border border-hairline shadow-card"
           >
             <svg
-              className="w-10 h-10 text-primary flex-shrink-0 rounded-sm bg-card-tint-mint p-[6px]"
+              className="w-10 h-10 text-primary shrink-0 rounded-sm bg-card-tint-mint p-1.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
