@@ -11,9 +11,8 @@
     "bio": "I'm a passionate software developer with experience building modern web applications using various frameworks and technologies. My work focuses on creating performant, accessible user experiences that are both beautiful and functional.",
     "stats": [
       { "value": "3+", "label": "Years Experience" },
-      { "value": "25+", "label": "Projects Completed" },
-      { "value": "5+", "label": "Clients Served" },
-      { "value": "4.9", "label": "Client Rating" }
+      { "value": "5+", "label": "Projects Completed" },
+      { "value": "5+", "label": "Clients Served" }
     ]
   },
   "experience": [

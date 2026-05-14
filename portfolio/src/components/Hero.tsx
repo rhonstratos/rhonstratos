@@ -1,3 +1,12 @@
+import { useEffect, useState } from "react";
+
+const roles = [
+  "Senior Full-Stack Software Developer",
+  "Laravel & Angular Specialist",
+  "AWS & Azure Cloud Architect",
+  "RxJS & Reactive UI Expert",
+];
+
 export default function Hero({
   name,
   title,
@@ -7,6 +16,28 @@ export default function Hero({
   title: string;
   summary: string;
 }) {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[roleIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && charIndex < current.length) {
+      timeout = setTimeout(() => setCharIndex((c) => c + 1), 60);
+    } else if (!deleting && charIndex === current.length) {
+      timeout = setTimeout(() => setDeleting(true), 2000);
+    } else if (deleting && charIndex > 0) {
+      timeout = setTimeout(() => setCharIndex((c) => c - 1), 30);
+    } else if (deleting && charIndex === 0) {
+      setDeleting(false);
+      setRoleIndex((i) => (i + 1) % roles.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, roleIndex]);
+
   return (
     <section
       id="home"
@@ -42,6 +73,18 @@ export default function Hero({
         </svg>
       </div>
 
+      {/* Sticky-note decorative dots */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <svg className="absolute top-1/4 left-[15%] w-3 h-3" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#ff64c8" /></svg>
+        <svg className="absolute top-[60%] left-[10%] w-2 h-2" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#f5d75e" /></svg>
+        <svg className="absolute top-[20%] right-[20%] w-2.5 h-2.5" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#1aae39" /></svg>
+        <svg className="absolute top-[70%] right-[12%] w-3 h-3" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#7b3ff2" /></svg>
+        <svg className="absolute top-[45%] left-[45%] w-2 h-2" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#2a9d99" /></svg>
+        <svg className="absolute top-[80%] left-[25%] w-2.5 h-2.5" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#ff64c8" /></svg>
+        <svg className="absolute top-[15%] right-[35%] w-2 h-2" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#2a9d99" /></svg>
+        <svg className="absolute top-[35%] right-[8%] w-2 h-2" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#f5d75e" /></svg>
+      </div>
+
       <div className="container mx-auto px-6 relative z-10 text-center">
         <h1
           id="hero-title"
@@ -51,8 +94,9 @@ export default function Hero({
           {name}
         </h1>
 
-        <p className="text-subtitle text-on-dark-muted font-sans animate-fade-in-up animate-delay-200">
-          {title}
+        <p className="text-subtitle text-on-dark-muted font-sans min-h-[1.5em] animate-fade-in-up animate-delay-200" aria-label={title}>
+          <span>{roles[roleIndex].substring(0, charIndex)}</span>
+          <span className="animate-pulse">|</span>
         </p>
 
         <div className="max-w-4xl mx-auto animate-fade-in-up animate-delay-400">

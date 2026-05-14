@@ -1,7 +1,47 @@
-import { Code, FileText, Cloud } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 
 const delays = ["", "animate-delay-200", "animate-delay-400"];
+
+const proficiency: Record<string, number> = {
+  "Frontend Engineering": 92,
+  "Backend & Database": 88,
+  "Cloud, DevOps & Infrastructure": 85,
+};
+
+function ProgressBar({ value }: { value: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { rootMargin: "-60px" },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+    const timer = setTimeout(() => setWidth(value), 200);
+    return () => clearTimeout(timer);
+  }, [visible, value]);
+
+  return (
+    <div ref={ref} className="w-full mb-xs">
+      <div className="h-2 rounded-full bg-hairline overflow-hidden">
+        <div
+          className="h-full rounded-full bg-primary transition-all duration-1000 ease-out"
+          style={{ width: `${width}%` }}
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function SkillsGrid({
   skills,
@@ -60,27 +100,16 @@ export default function SkillsGrid({
               {category}
             </h3>
 
-            <ul className="space-y-2">
+            <ProgressBar value={proficiency[category] || 80} />
+
+            <ul className="space-y-2 mt-md">
               {technologies.map((tech, techIdx) => (
                 <li
                   key={tech}
                   className="flex items-center gap-xs group hover:bg-surface_soft hover:translate-x-0.5 rounded-lg p-xxs -ml-xxs transition-all duration-200 animate-slide-in-right"
                   style={{ animationDelay: `${techIdx * 0.03}s` }}
                 >
-                  {(idx % 3 === 0 && (
-                    <Code
-                      className="w-5 h-5 text-primary shrink-0 mt-0.5"
-                    />
-                  )) ||
-                    (idx % 3 === 1 && (
-                      <FileText
-                        className="w-5 h-5 text-brand_pink shrink-0 mt-0.5"
-                      />
-                    )) || (
-                      <Cloud
-                        className="w-5 h-5 text-brand_teal shrink-0 mt-0.5"
-                      />
-                    )}
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-0.5 bg-primary" />
                   <span className="text-charcoal leading-relaxed group-hover:text-slate transition-colors truncate max-w-full text-body-sm font-sans">
                     {tech}
                   </span>

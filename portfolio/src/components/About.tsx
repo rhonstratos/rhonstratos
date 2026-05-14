@@ -1,6 +1,49 @@
+import { useEffect, useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 
 const delays = ["animate-delay-100", "animate-delay-200", "animate-delay-300", "animate-delay-400"];
+
+function AnimatedStat({ value, label, delay }: { value: string; label: string; delay: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [display, setDisplay] = useState("0");
+  const [visible, setVisible] = useState(false);
+  const num = parseInt(value);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { rootMargin: "-80px" },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible || isNaN(num)) { setDisplay(value); return; }
+    let start = 0;
+    const end = num;
+    const duration = 1200;
+    const step = Math.ceil(end / (duration / 16));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= end) { start = end; clearInterval(timer); }
+      setDisplay(String(start));
+    }, 16);
+    return () => clearInterval(timer);
+  }, [visible, num, value]);
+
+  return (
+    <div
+      ref={ref}
+      className={`animate-fade-in-up ${delay} transition-transform duration-200 hover:-translate-y-1`}
+    >
+      <span className="text-3xl font-bold text-brand_navy">{display}{value.endsWith("+") ? "+" : ""}</span>
+      <p className="text-body-sm text-slate mt-1">{label}</p>
+    </div>
+  );
+}
 
 export default function About({
   bio,
@@ -44,15 +87,9 @@ export default function About({
           {bio}
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 text-center">
+        <div className="flex flex-wrap justify-center gap-6 mt-10 text-center">
           {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className={`animate-fade-in-up ${delays[i]} transition-transform duration-200 hover:-translate-y-1`}
-            >
-              <span className="text-3xl font-bold text-brand_navy">{stat.value}</span>
-              <p className="text-body-sm text-slate mt-1">{stat.label}</p>
-            </div>
+            <AnimatedStat key={stat.label} value={stat.value} label={stat.label} delay={delays[i]} />
           ))}
         </div>
       </AnimatedSection>

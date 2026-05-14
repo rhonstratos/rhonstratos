@@ -2,6 +2,8 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html { scroll-behavior: smooth; }
+
 @theme {
   /* Primary & Brand */
   --color-primary: var(--_primary);

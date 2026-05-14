@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = ["Home", "About", "Experience", "Skills", "Education", "Contact", "Resume"];
 
@@ -18,16 +18,37 @@ function CloseIcon() {
   return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>;
 }
 
+const sectionIds = ["home", "about", "experience", "skills", "education", "contact"];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-50% 0px -50% 0px" },
+    );
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    }
+    return () => obs.disconnect();
   }, []);
 
   useEffect(() => {
@@ -79,14 +100,21 @@ export default function Header() {
         <nav className="hidden lg:flex gap-8">
           {links.map((link) => {
             const isResume = link === "Resume";
+            const sectionId = link.toLowerCase();
+            const isActive = !isResume && activeSection === sectionId;
             return (
               <a
                 key={link}
-                href={isResume ? `${import.meta.env.BASE_URL}resume.pdf` : link === "Home" ? "#home" : `#${link.toLowerCase()}`}
+                href={isResume ? `${import.meta.env.BASE_URL}resume.pdf` : `#${sectionId}`}
                 {...(isResume ? { target: "_blank", rel: "noopener noreferrer", download: true } : {})}
-                className="text-slate hover:text-brand_navy font-medium text-body-sm font-sans whitespace-nowrap py-2 transition-all duration-150 hover:scale-105 active:scale-95"
+                className={`font-medium text-body-sm font-sans whitespace-nowrap py-2 transition-all duration-150 hover:scale-105 active:scale-95 relative ${
+                  isActive ? "text-brand_navy" : "text-slate hover:text-brand_navy"
+                }`}
               >
                 {link}
+                {isActive && (
+                  <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-primary" />
+                )}
               </a>
             );
           })}
@@ -120,13 +148,17 @@ export default function Header() {
           <nav className="flex flex-col px-4 py-3 gap-1">
             {links.map((link) => {
               const isResume = link === "Resume";
+              const sectionId = link.toLowerCase();
+              const isActive = !isResume && activeSection === sectionId;
               return (
                 <a
                   key={link}
-                href={isResume ? `${import.meta.env.BASE_URL}resume.pdf` : link === "Home" ? "#home" : `#${link.toLowerCase()}`}
+                  href={isResume ? `${import.meta.env.BASE_URL}resume.pdf` : `#${sectionId}`}
                   {...(isResume ? { target: "_blank", rel: "noopener noreferrer", download: true } : {})}
                   onClick={() => setMenuOpen(false)}
-                  className="text-slate hover:text-brand_navy font-medium text-body-sm font-sans px-3 py-2.5 rounded-md hover:bg-surface transition-colors"
+                  className={`font-medium text-body-sm font-sans px-3 py-2.5 rounded-md transition-colors ${
+                    isActive ? "bg-primary/10 text-primary" : "text-slate hover:text-brand_navy hover:bg-surface"
+                  }`}
                 >
                   {link}
                 </a>
