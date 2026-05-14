@@ -1,5 +1,13 @@
 import AnimatedSection from "./AnimatedSection";
 
+const tints = [
+  "bg-card-tint-mint",
+  "bg-card-tint-sky",
+  "bg-card-tint-lavender",
+  "bg-card-tint-peach",
+  "bg-card-tint-rose",
+];
+
 export default function EducationSection({
   education,
 }: {
@@ -12,45 +20,45 @@ export default function EducationSection({
   return (
     <section
       id="education"
-      aria-labelledby="education-region-label"
+      aria-labelledby="education-heading"
       className="py-section-sm md:py-section bg-surface relative overflow-hidden"
     >
-      <div
-        className="absolute top-0 left-8 w-0.5 h-full opacity-[0.07] pointer-events-none"
-        aria-hidden="true"
-      />
-
-      <AnimatedSection className="px-6">
+      <AnimatedSection className="px-xl">
         <h2
           id="education-heading"
-          className="text-heading-3 md:text-heading-2 text-brand_navy mb-6 md:mb-8 font-sans"
+          className="text-heading-3 md:text-heading-2 text-brand_navy mb-xl md:mb-xxl font-sans"
         >
           Education
         </h2>
       </AnimatedSection>
 
-      <div className="mx-auto px-6 grid gap-xl max-w-4xl">
-        <div
-          id={`${education[0]?.institution}-card`}
-          role="article"
-          aria-labelledby={`${education[0]?.institution}-heading`}
-          className={`rounded-lg p-xl border border-hairline transition-transform duration-200 hover:-translate-y-0.5 ${
-            education.length > 1 ? "bg-card-tint-mint text-charcoal" : "bg-canvas"
-          } animate-fade-in-up`}
-        >
-          <h3
-            id={`${education[0]?.institution}-heading`}
-            className="text-heading-5 text-brand_navy mb-xxs font-sans"
+      <div className="mx-auto px-xl grid gap-xl">
+        {education.map((edu, i) => (
+          <div
+            key={edu.institution}
+            id={`${edu.institution}-card`}
+            role="article"
+            aria-labelledby={`${edu.institution}-heading`}
+            className={`rounded-lg p-sm border border-hairline transition-transform duration-200 hover:-translate-y-0.5 ${tints[i % tints.length]} animate-fade-in-up`}
           >
-            {education[0]?.institution || ""}
-          </h3>
-          <p className="text-body-md-medium text-slate mb-1 font-sans">
-            {education[0]?.degree || ""}
-          </p>
-          <p className="text-body-sm font-medium text-slate font-sans">
-            {education[0]?.period || ""}
-          </p>
-        </div>
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-xxs sm:gap-md">
+              <div>
+                <h3
+                  id={`${edu.institution}-heading`}
+                  className="text-heading-5 text-brand_navy mb-xxs font-sans"
+                >
+                  {edu.institution}
+                </h3>
+                <p className="text-body-md-medium text-slate font-sans">
+                  {edu.degree}
+                </p>
+              </div>
+              <span className="text-body-sm whitespace-nowrap font-medium text-steel font-sans shrink-0 mt-xxs sm:mt-0">
+                {edu.period}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
