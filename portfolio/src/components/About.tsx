@@ -5,34 +5,35 @@ const delays = ["animate-delay-100", "animate-delay-200", "animate-delay-300", "
 
 function AnimatedStat({ value, label, delay }: { value: string; label: string; delay: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [display, setDisplay] = useState("0");
-  const [visible, setVisible] = useState(false);
+  const [display, setDisplay] = useState(value);
   const num = parseInt(value);
+  const startedRef = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      ([entry]) => {
+        if (entry.isIntersecting && !startedRef.current) {
+          startedRef.current = true;
+          obs.disconnect();
+          if (isNaN(num)) return;
+          let start = 0;
+          const end = num;
+          const duration = 1200;
+          const step = Math.ceil(end / (duration / 16));
+          const timer = setInterval(() => {
+            start += step;
+            if (start >= end) { start = end; clearInterval(timer); }
+            setDisplay(String(start));
+          }, 16);
+        }
+      },
       { rootMargin: "-80px" },
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!visible || isNaN(num)) { setDisplay(value); return; }
-    let start = 0;
-    const end = num;
-    const duration = 1200;
-    const step = Math.ceil(end / (duration / 16));
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) { start = end; clearInterval(timer); }
-      setDisplay(String(start));
-    }, 16);
-    return () => clearInterval(timer);
-  }, [visible, num, value]);
+  }, [num]);
 
   return (
     <div
