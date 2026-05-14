@@ -39,7 +39,7 @@ export default function GitHubSection() {
         </h2>
       </AnimatedSection>
 
-      <div className="mx-auto px-6 grid gap-lg max-w-4xl">
+      <div className="mx-auto px-6 grid gap-lg">
         {profiles.map((profile, i) => (
           <a
             key={profile.username}
@@ -54,9 +54,15 @@ export default function GitHubSection() {
               <GitHubIcon />
             </div>
             <div>
-              <p className="font-medium text-brand_navy font-sans">{profile.label}</p>
-              <p className="text-body-sm text-steel font-sans">{profile.username}</p>
-              <p className="text-body-sm text-slate font-sans mt-0.5">{profile.description}</p>
+              <p className="font-medium text-brand_navy font-sans">
+                {profile.label}
+              </p>
+              <p className="text-body-sm text-steel font-sans">
+                {profile.username}
+              </p>
+              <p className="text-body-sm text-slate font-sans mt-0.5">
+                {profile.description}
+              </p>
             </div>
           </a>
         ))}
